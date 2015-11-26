@@ -37,7 +37,7 @@ public class CalculatorTest {
     
     /**
      * Esecuzione dei casi di test positivi: somme di numeri</br>
-     * Il test verifica <b>Step 1</b>
+     * Il test verifica <b>Step 2</b>
      */
     @Test
     public void testSumUnknownAmountOfNumbers() {
