@@ -7,7 +7,7 @@ package org.agnese.string;
 public interface ICalculator {
 	/**
 	 * Il metodo permette di sommare fino a due numeri.
-	 * Se la stringa è vuota il risultato ottenuto sar&agrave; 0.
+	 * Se la stringa &egrave; vuota il risultato ottenuto sar&agrave; 0.
 	 * @param numbers lista di numeri da sommare
 	 * @return la somma dei numeri
 	 */

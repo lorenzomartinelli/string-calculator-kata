@@ -1,44 +1,34 @@
 package org.agnese.string;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 /**
- * Unit test per {@link ICalculator}
+ * Casi di test per l'implementazione dell'interfaccia {@link ICalculator}
  */
-public class CalculatorTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public CalculatorTest(String testName) {
-        super(testName);
-    }
+public class CalculatorTest {
+	/**
+	 * Istanza da testare
+	 */
+	private ICalculator calculator = new Calculator();
 
     /**
-     * @return the suite of tests being tested
+     * Esecuzione dei casi di test positivi: stringhe nulle.
      */
-    public static Test suite()
-    {
-        return new TestSuite(CalculatorTest.class);
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testAdd()
-    {
-    	ICalculator calculator = null;
-    	
+    @Test
+    public void testZero() {
         assertTrue( calculator.add(null) == 0 );
         assertTrue(calculator.add("") == 0);
-        assertTrue(calculator.add(" ") == 0);
-        
-        assertTrue( calculator.add("1") == 1 );
+        assertTrue(calculator.add("    ") == 0);
+    }
+    
+    /**
+     * Esecuzione dei casi di test positivi: somme di numeri
+     */
+    @Test
+    public void testSum() {
+    	assertTrue( calculator.add("1") == 1 );
         assertTrue( calculator.add("1,2") == 3 );
+        assertTrue( calculator.add("18,29") == 47 );
     }
 }
