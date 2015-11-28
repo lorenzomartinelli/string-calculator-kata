@@ -90,4 +90,14 @@ public class CalculatorTest {
 			assertTrue(true);
 		}
     }
+    
+    /**
+     * Esecuzione dei casi di test descritti in <b>Step 4</b>
+     * In particolare aggiungo un delimitatore variabile ovvero:
+     * <p><code>"//[delimiter]\n[numbers...]"</code></p>
+     */
+    @Test
+    public void testStepDifferentDelimiters() {
+    	assertTrue( calculator.add("//;\n1;2") == 3 );
+    }
 }
