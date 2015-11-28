@@ -15,7 +15,8 @@ public interface ICalculator {
 	int add(String numbers);
 	
 	/**
-	 * Lista di separatori supportati dal calcolatore
+	 * Lista di separatori supportati dal calcolatore.
+	 * Ha la responsabilit&agrave; di definire i separatori supportati
 	 * @author Lorenzo Martinelli
 	 */
 	enum Separators {

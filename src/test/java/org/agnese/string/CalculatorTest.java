@@ -27,7 +27,7 @@ public class CalculatorTest {
     
     /**
      * Esecuzione dei casi di test positivi: somme di uno o due numeri</br>
-     * Il test verifica <b>Step 1</b>
+     * Il test verifica <b>Step 1</b> per tutti i separatori previsti.
      */
     @Test
     public void testSum() {
@@ -45,7 +45,7 @@ public class CalculatorTest {
     
     /**
      * Esecuzione dei casi di test positivi: somme di numeri</br>
-     * Il test verifica <b>Step 2</b>
+     * Il test verifica <b>Step 2</b> per tutti i separatori previsti.
      */
     @Test
     public void testSumUnknownAmountOfNumbers() {
@@ -69,10 +69,19 @@ public class CalculatorTest {
     	}
     }
     
+    /**
+     * Esecuzione dei casi di test descritti in <b>Step 3</b>
+     */
     @Test
     public void testStep3() {
     	assertTrue( calculator.add("1\n2,3") == 6 );
-    	
+    }
+    
+    /**
+     * Test della stringa <b>non</b> valida definita in <b>Step 3</b>
+     */
+    @Test
+    public void testStepInvalidString() {
     	// Anche se non e' da testare...
     	try {
     		calculator.add("1,\n");
@@ -80,6 +89,5 @@ public class CalculatorTest {
 		} catch (Exception e) {
 			assertTrue(true);
 		}
-    	
     }
 }
