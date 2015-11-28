@@ -28,12 +28,30 @@ class Calculator implements ICalculator {
 		}
 		
 		// Somma della stringa
-		String[] addends = numbers.split(SEPARATOR);
+		String[] addends = numbers.split(getSeparator());
 		int result = 0;
 		for (int i = 0; i < addends.length; i++) {
 			result = result + Integer.parseInt(addends[i]);
 		}
 		return result;
 	}
+	
 
+	static String getSeparator() {
+		return SEPARATOR;
+	}
+	
+	enum Separators {
+		COMMAS(","), NEWLINE("\n");
+		
+		private String separator;
+		
+		Separators(String separator) {
+			this.separator = separator;
+		}
+		
+		String getSeparator() {
+			return this.separator;
+		}
+	}
 }

@@ -1,6 +1,7 @@
 package org.agnese.string;
 
 import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 /**
@@ -31,8 +32,14 @@ public class CalculatorTest {
     public void testSum() {
     	assertTrue( calculator.add("1") == 1 );
     	assertTrue( calculator.add("157") == 157 );
-        assertTrue( calculator.add("1,2") == 3 );
-        assertTrue( calculator.add("18,29") == 47 );
+    	
+    	for (Calculator.Separators separator : Calculator.Separators.values()) {
+    		assertTrue(calculator.add("1" + 
+    			separator.getSeparator() + "2") == 3 );
+            assertTrue(calculator.add("18" + 
+    			separator.getSeparator() + "29") == 47 );
+		}
+        
     }
     
     /**
@@ -41,8 +48,23 @@ public class CalculatorTest {
      */
     @Test
     public void testSumUnknownAmountOfNumbers() {
-    	assertTrue( calculator.add("1,2,3,4,5") == 15 );
-        assertTrue( calculator.add("1,3,17,99") == 120 );
-        assertTrue( calculator.add("2,1,18,29,1000,3,3447") == 4500 );
+    	for (Calculator.Separators separator : Calculator.Separators.values()) {
+    		assertTrue( calculator.add("1" + 
+    			separator.getSeparator() + "2" + 
+    			separator.getSeparator() + "3" + 
+    			separator.getSeparator() + "4" + 
+    			separator.getSeparator() + "5") == 15 );
+            assertTrue( calculator.add("1" + 
+    			separator.getSeparator() + "3" + 
+    			separator.getSeparator() + "17" + 
+    			separator.getSeparator() + "99") == 120 );
+            assertTrue( calculator.add("2" + 
+    			separator.getSeparator() + "1" + 
+    			separator.getSeparator() + "18" + 
+    			separator.getSeparator() + "29" + 
+    			separator.getSeparator() + "1000" + 
+    			separator.getSeparator() + "3" + 
+    			separator.getSeparator() + "3447") == 4500 );
+    	}
     }
 }
