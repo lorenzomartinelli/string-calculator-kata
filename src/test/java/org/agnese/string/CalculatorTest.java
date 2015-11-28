@@ -1,6 +1,7 @@
 package org.agnese.string;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -33,7 +34,7 @@ public class CalculatorTest {
     	assertTrue( calculator.add("1") == 1 );
     	assertTrue( calculator.add("157") == 157 );
     	
-    	for (Calculator.Separators separator : Calculator.Separators.values()) {
+    	for (ICalculator.Separators separator : ICalculator.Separators.values()) {
     		assertTrue(calculator.add("1" + 
     			separator.getSeparator() + "2") == 3 );
             assertTrue(calculator.add("18" + 
@@ -48,7 +49,7 @@ public class CalculatorTest {
      */
     @Test
     public void testSumUnknownAmountOfNumbers() {
-    	for (Calculator.Separators separator : Calculator.Separators.values()) {
+    	for (ICalculator.Separators separator : ICalculator.Separators.values()) {
     		assertTrue( calculator.add("1" + 
     			separator.getSeparator() + "2" + 
     			separator.getSeparator() + "3" + 
@@ -66,5 +67,19 @@ public class CalculatorTest {
     			separator.getSeparator() + "3" + 
     			separator.getSeparator() + "3447") == 4500 );
     	}
+    }
+    
+    @Test
+    public void testStep3() {
+    	assertTrue( calculator.add("1\n2,3") == 6 );
+    	
+    	// Anche se non e' da testare...
+    	try {
+    		calculator.add("1,\n");
+    		fail("La stringa non deve essere valida");
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+    	
     }
 }

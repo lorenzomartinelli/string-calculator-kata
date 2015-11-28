@@ -12,9 +12,10 @@ package org.agnese.string;
 class Calculator implements ICalculator {
 
 	/**
-	 * Separatori supportati da {@link Calculator}
+	 * Token che va a sostituire tutti i separatori supportati e definiti in
+	 * <code>{@link ICalculator.Separators}</code>
 	 */
-	private static final String SEPARATOR = ",";
+	private static final String TOKEN = "@@@";
 
 	/**
 	 * Implementazione del metodo add come da specifiche
@@ -27,31 +28,16 @@ class Calculator implements ICalculator {
 			return 0;
 		}
 		
+		for (ICalculator.Separators separator : ICalculator.Separators.values()) {
+			numbers = numbers.replace(separator.getSeparator(), TOKEN);
+		}
+		
 		// Somma della stringa
-		String[] addends = numbers.split(getSeparator());
+		String[] addends = numbers.split(TOKEN);
 		int result = 0;
 		for (int i = 0; i < addends.length; i++) {
 			result = result + Integer.parseInt(addends[i]);
 		}
 		return result;
-	}
-	
-
-	static String getSeparator() {
-		return SEPARATOR;
-	}
-	
-	enum Separators {
-		COMMAS(","), NEWLINE("\n");
-		
-		private String separator;
-		
-		Separators(String separator) {
-			this.separator = separator;
-		}
-		
-		String getSeparator() {
-			return this.separator;
-		}
 	}
 }
