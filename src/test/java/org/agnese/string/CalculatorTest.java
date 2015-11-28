@@ -20,7 +20,7 @@ public class CalculatorTest {
      */
     @Test
     public void testZero() {
-        assertTrue( calculator.add(null) == 0 );
+        assertTrue(calculator.add(null) == 0);
         assertTrue(calculator.add("") == 0);
         assertTrue(calculator.add("    ") == 0);
     }
@@ -31,14 +31,14 @@ public class CalculatorTest {
      */
     @Test
     public void testSum() {
-    	assertTrue( calculator.add("1") == 1 );
-    	assertTrue( calculator.add("157") == 157 );
+    	assertTrue(calculator.add("1") == 1);
+    	assertTrue(calculator.add("157") == 157);
     	
     	for (ICalculator.Separators separator : ICalculator.Separators.values()) {
     		assertTrue(calculator.add("1" + 
-    			separator.getSeparator() + "2") == 3 );
+    			separator.getSeparator() + "2") == 3);
             assertTrue(calculator.add("18" + 
-    			separator.getSeparator() + "29") == 47 );
+    			separator.getSeparator() + "29") == 47);
 		}
         
     }
@@ -50,22 +50,22 @@ public class CalculatorTest {
     @Test
     public void testSumUnknownAmountOfNumbers() {
     	for (ICalculator.Separators separator : ICalculator.Separators.values()) {
-    		assertTrue( calculator.add("1" + 
+    		assertTrue(calculator.add("1" + 
     			separator.getSeparator() + "2" + 
     			separator.getSeparator() + "3" + 
     			separator.getSeparator() + "4" + 
-    			separator.getSeparator() + "5") == 15 );
-            assertTrue( calculator.add("1" + 
+    			separator.getSeparator() + "5") == 15);
+            assertTrue(calculator.add("1" + 
     			separator.getSeparator() + "3" + 
     			separator.getSeparator() + "17" + 
-    			separator.getSeparator() + "99") == 120 );
-            assertTrue( calculator.add("2" + 
+    			separator.getSeparator() + "99") == 120);
+            assertTrue(calculator.add("2" + 
     			separator.getSeparator() + "1" + 
     			separator.getSeparator() + "18" + 
     			separator.getSeparator() + "29" + 
     			separator.getSeparator() + "1000" + 
     			separator.getSeparator() + "3" + 
-    			separator.getSeparator() + "3447") == 4500 );
+    			separator.getSeparator() + "3447") == 4500);
     	}
     }
     
@@ -74,15 +74,15 @@ public class CalculatorTest {
      */
     @Test
     public void testStep3() {
-    	assertTrue( calculator.add("1\n2,3") == 6 );
+    	assertTrue(calculator.add("1\n2,3") == 6);
     }
     
     /**
      * Test della stringa <b>non</b> valida definita in <b>Step 3</b>
+     * anche se non e' da testare...
      */
     @Test
     public void testStepInvalidString() {
-    	// Anche se non e' da testare...
     	try {
     		calculator.add("1,\n");
     		fail("La stringa non deve essere valida");
@@ -98,6 +98,17 @@ public class CalculatorTest {
      */
     @Test
     public void testStepDifferentDelimiters() {
-    	assertTrue( calculator.add("//;\n1;2") == 3 );
+    	assertTrue(calculator.add("//;\n1;2") == 3);
+    	assertTrue(calculator.add("//;\n1;2;19;43") == 65);
+    	assertTrue(calculator.add("//%%\n1%%2%%19%%43") == 65);
     }
+    
+    /**
+     * Verifico che vada in errore per la mancanza di \n
+     */
+    @Test(expected = IllegalArgumentException.class) 
+    public void testInvalidInput() {
+    	calculator.add("//;1;2;19;43");
+    }
+    
 }
