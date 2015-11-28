@@ -12,7 +12,6 @@ import java.util.logging.Logger;
  * @author Lorenzo Martinelli
  */
 class Calculator implements ICalculator {
-	private Logger logger = Logger.getLogger(Calculator.class.getName());
 
 	/**
 	 * Implementazione del metodo add come da specifiche
@@ -39,59 +38,57 @@ class Calculator implements ICalculator {
 	}
 	
 	/**
-	 * Ha la responsabilit&agrave; di interpretare la stringa di input al fine
-	 * di capire se vi &egrave; un separatore
+	 * Ha la responsabilit&agrave; di interpretare la stringa di input al fine di
+	 * capire se vi &egrave; un separatore
+	 * 
 	 * @author Lorenzo Martinelli
-	 *
 	 */
-	private class InputInterpreter {
+	private static class InputInterpreter {
+		private final static Logger logger = 
+			Logger.getLogger(Calculator.InputInterpreter.class.getName());
+
 		private String numbers;
 		private String regEx;
-		
+
 		/**
-		 * 
-		 * @return la regular expression
-		 */
-		
-		
-		/**
-		 * Ha la responsabilit&agrave; di creare la regular expression necessaria per
-		 * otterere gli addendi.</br>
+		 * Ha la responsabilit&agrave; di creare la regular expression necessaria
+		 * per otterere gli addendi.</br>
 		 * Gestisce sia la lista di separatori supportati che il delimitato passato
 		 * dal client: </code>"//[delimiter]\n[numbers...]"</code>
+		 * 
 		 * @param numbers il parametro di input da interpretare
 		 */
-		private InputInterpreter(String parameter) {
+		InputInterpreter(String parameter) {
 			if (parameter.startsWith("//")) {
 				int index = parameter.indexOf("\n");
 				if (index < 0) {
 					logger.severe("La stringa[" + parameter + "] deve contenere \\n");
 					throw new IllegalArgumentException();
 				}
-				
+
 				String delimiter = parameter.substring(2, index);
-				
+
 				this.numbers = parameter.substring(index + 1);
 				this.regEx = delimiter;
 				return;
 			}
-			
+
 			// Rendo dinamica la lista di separatori
 			String regEx = "";
 			for (ICalculator.Separators separator : ICalculator.Separators.values()) {
 				regEx = regEx + separator.getSeparator();
 			}
-			
+
 			this.numbers = parameter;
 			this.regEx = "[" + regEx + "]";
 		}
-		
+
 		private String getNumbers() {
 			return this.numbers;
 		}
-		
+
 		private String getRegEx() {
 			return this.regEx;
-		}		
+		}
 	}
 }

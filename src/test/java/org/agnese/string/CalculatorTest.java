@@ -111,4 +111,13 @@ public class CalculatorTest {
     	calculator.add("//;1;2;19;43");
     }
     
+    /**
+     * Esecuzione dei casi di test descritti in <b>Step 5</b>, ovvero la gestione
+     * dei numeri negativi
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeNumbers() {
+    	calculator.add("1,4,-1");
+    }
+    
 }
