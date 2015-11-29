@@ -42,6 +42,7 @@ class Calculator implements ICalculator {
 				throw new IllegalArgumentException("negatives not allowed: " + 
 					messageError);
 			}
+			
 			result = result + Integer.parseInt(addends[i]);
 		}
 		return result;

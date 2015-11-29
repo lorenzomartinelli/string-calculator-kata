@@ -135,5 +135,19 @@ public class CalculatorTest {
 		}
     }
     
+    /**
+     * Verifica che i numeri maggiori di 1000 siano omessi come richiesto da
+     * <b>Step 6</b>
+     */
+    @Test
+    public void testIgnoreBigNumbers() {
+    	for (ICalculator.Separators separator : ICalculator.Separators.values()) {
+    		assertTrue(calculator.add("2" + 
+    			separator.getSeparator() + "1000") == 1002);
+    		assertTrue(calculator.add("2" + 
+        			separator.getSeparator() + "1001") == 2);
+    	}	
+    }
+    
     
 }
