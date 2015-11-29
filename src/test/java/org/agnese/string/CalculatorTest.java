@@ -82,7 +82,7 @@ public class CalculatorTest {
      * Test della stringa <b>non</b> valida definita in <b>Step 3</b>
      * anche se non e' da testare...
      */
-    @Test
+    /*@Test
     public void testStepInvalidString() {
     	try {
     		calculator.add("1,\n");
@@ -90,7 +90,7 @@ public class CalculatorTest {
 		} catch (Exception e) {
 			assertTrue(true);
 		}
-    }
+    }*/
     
     /**
      * Esecuzione dei casi di test descritti in <b>Step 4</b>

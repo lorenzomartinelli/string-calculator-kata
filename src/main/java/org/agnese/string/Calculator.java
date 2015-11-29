@@ -35,7 +35,9 @@ class Calculator implements ICalculator {
 			if (Integer.parseInt(addends[i]) < 0) {
 				String messageError = addends[i];
 				for (int j = i + 1; j < addends.length; j++) {
-					messageError = messageError.concat(", " + addends[j]);
+					if (Integer.parseInt(addends[j]) < 0) {
+						messageError = messageError.concat(", " + addends[j]);
+					}
 				}
 				throw new IllegalArgumentException("negatives not allowed: " + 
 					messageError);
