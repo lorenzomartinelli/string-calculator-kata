@@ -66,7 +66,7 @@ public class CalculatorTest {
     			separator.getSeparator() + "29" + 
     			separator.getSeparator() + "1000" + 
     			separator.getSeparator() + "3" + 
-    			separator.getSeparator() + "3447") == 4500);
+    			separator.getSeparator() + "447") == 1500);
     	}
     }
     

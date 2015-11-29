@@ -43,7 +43,9 @@ class Calculator implements ICalculator {
 					messageError);
 			}
 			
-			result = result + Integer.parseInt(addends[i]);
+			if (Integer.parseInt(addends[i]) <= 1000) {
+				result = result + Integer.parseInt(addends[i]);
+			}
 		}
 		return result;
 	}
