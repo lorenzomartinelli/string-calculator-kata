@@ -1,6 +1,7 @@
 package org.agnese.string;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
@@ -119,5 +120,20 @@ public class CalculatorTest {
     public void testNegativeNumbers() {
     	calculator.add("1,4,-1");
     }
+    
+    /**
+     * Verifica del messaggio di errore in caso di numeri negativi per <b>Step 5</b>
+     */
+    @Test
+    public void testNegativeNumbersExceptionMessage() {
+    	try {
+    		calculator.add("1,4,-1,5,6,-7,8,-11,3,4,-99");
+		} catch (IllegalArgumentException e) {
+			assertEquals("La stringa di errore e' sbagliata", 
+				"negatives not allowed: -1, -7, -11, -99", 
+				e.getMessage());
+		}
+    }
+    
     
 }

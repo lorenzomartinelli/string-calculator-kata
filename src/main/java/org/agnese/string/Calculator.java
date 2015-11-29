@@ -32,6 +32,14 @@ class Calculator implements ICalculator {
 		// Somma delle stringhe separate
 		int result = 0;
 		for (int i = 0; i < addends.length; i++) {
+			if (Integer.parseInt(addends[i]) < 0) {
+				String messageError = addends[i];
+				for (int j = i + 1; j < addends.length; j++) {
+					messageError = messageError.concat(", " + addends[j]);
+				}
+				throw new IllegalArgumentException("negatives not allowed: " + 
+					messageError);
+			}
 			result = result + Integer.parseInt(addends[i]);
 		}
 		return result;
