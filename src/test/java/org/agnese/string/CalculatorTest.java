@@ -146,6 +146,11 @@ public class CalculatorTest {
     			separator.getSeparator() + "1000") == 1002);
     		assertTrue(calculator.add("2" + 
         			separator.getSeparator() + "1001") == 2);
+    		assertTrue(calculator.add("2" + 
+        			separator.getSeparator() + "1001" + 
+        			separator.getSeparator() + "1000" + 
+        			separator.getSeparator() + "1401" + 
+        			separator.getSeparator() + "998") == 2000);
     	}	
     }
     
