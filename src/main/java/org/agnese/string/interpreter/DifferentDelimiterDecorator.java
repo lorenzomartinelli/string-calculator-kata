@@ -29,7 +29,7 @@ class DifferentDelimiterDecorator extends AbstractInterpreterDecorator {
 				throw new IllegalArgumentException();
 			}
 
-			super.getState().setRegEx(numbers.substring(2, index));
+			getState().setRegEx(numbers.substring(2, index));
 			return super.evaluate(numbers.substring(index + 1));
 		}
 		

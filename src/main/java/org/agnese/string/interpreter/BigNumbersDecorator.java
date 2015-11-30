@@ -16,7 +16,7 @@ class BigNumbersDecorator extends AbstractInterpreterDecorator {
 	 * @param state lo stato dell'interpretazione
 	 */
 	BigNumbersDecorator(IInternalState state) {
-		super(null, state);
+		super(new InterpreterComponent(state), state);
 	}
 
 	@Override
@@ -40,9 +40,6 @@ class BigNumbersDecorator extends AbstractInterpreterDecorator {
 			}
 		}
 		
-		// Associo il component a questo decorator
-		IInterpreterComponent component = new InterpreterComponent(getState());
-		setComponent(component);
 		return super.evaluate(numbers);
 	}
 }

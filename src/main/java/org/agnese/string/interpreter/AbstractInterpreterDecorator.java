@@ -49,7 +49,7 @@ abstract class AbstractInterpreterDecorator implements IInterpreterComponent {
 		return component;
 	}
 	
-	protected void setComponent(IInterpreterComponent component) {
+	private void setComponent(IInterpreterComponent component) {
 		this.component = component;
 	}
 
