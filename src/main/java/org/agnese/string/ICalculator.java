@@ -28,8 +28,21 @@ public interface ICalculator {
 			this.separator = separator;
 		}
 		
-		String getSeparator() {
+		public String getSeparator() {
 			return this.separator;
+		}
+		
+		public static String getSingleDefaultSeparator() {
+			return COMMAS.getSeparator();
+		}
+		
+		public static String getAllSeparators() {
+			String regEx = "";
+			for (ICalculator.Separators separator : ICalculator.Separators.values()) {
+				regEx = regEx + separator.getSeparator();
+			}
+			
+			return "[" + regEx + "]";
 		}
 	}
 }

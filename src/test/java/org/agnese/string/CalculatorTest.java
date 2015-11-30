@@ -1,7 +1,7 @@
 package org.agnese.string;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
@@ -13,14 +13,19 @@ public class CalculatorTest {
 	/**
 	 * Istanza da testare
 	 */
-	private ICalculator calculator = new Calculator();
+	private ICalculator calculator;
+	
+	public CalculatorTest() {
+		// calculator = new Calculator();
+		calculator = new OtherCalculatorImpl();
+	}
 
     /**
      * Esecuzione dei casi di test positivi: stringhe nulle.</br>
      * Il test verifica <b>Step 1</b>
      */
     @Test
-    public void testZero() {
+    public void testNullInput() {
         assertTrue(calculator.add(null) == 0);
         assertTrue(calculator.add("") == 0);
         assertTrue(calculator.add("    ") == 0);
@@ -81,8 +86,8 @@ public class CalculatorTest {
     /**
      * Test della stringa <b>non</b> valida definita in <b>Step 3</b>
      * anche se non e' da testare...
-     */
-    /*@Test
+     
+    @Test
     public void testStepInvalidString() {
     	try {
     		calculator.add("1,\n");
